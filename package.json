@@ -1,0 +1,28 @@
+{
+  "name": "pw-manager",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "node dist/app.js ",
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M-Sieger/pw-manager.git"
+  },
+  "keywords": [],
+  "author": "Mortiz Sieger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/M-Sieger/pw-manager/issues"
+  },
+  "homepage": "https://github.com/M-Sieger/pw-manager#readme",
+  "devDependencies": {
+    "@types/node": "^14.14.31",
+    "typescript": "^4.2.2"
+  }
+}
