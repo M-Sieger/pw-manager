@@ -24,7 +24,7 @@ const run = async () => {
       value: "1111",
     });
     console.log(await readPasswordDoc("Moritz"));
-    await updatePasswordDoc({ name: "Moritz", value: "1112" });
+    await updatePasswordDoc("Moritz", { name: "Moritz", value: "1112" });
     await deletePasswordDoc("Moritz");
     await closeDB();
   } catch (error) {
