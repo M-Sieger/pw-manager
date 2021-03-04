@@ -33,13 +33,21 @@ export async function readPasswordDoc(passwordName: string) {
 
 export async function updatePasswordDoc(
   passwordName: string,
-  passwordDoc: PasswordDoc
-) {
+  fieldsToUpdate: Partial<PasswordDoc>
+): Promise<Boolean> {
   const passwordCollection = await getCollection<PasswordDoc>("passwords");
-  return await passwordCollection.updateOne(
+  const upadeResult = await passwordCollection.updateOne(
     { name: passwordName },
-    { $set: passwordDoc }
+    { $set: fieldsToUpdate }
   );
+  return upadeResult.modifiedCount >= 1;
+}
+
+export async function updatePasswordValue(
+  passwordName: string,
+  newPasswordValue: string
+): Promise<Boolean> {
+  return await updatePasswordDoc(passwordName, { value: newPasswordValue });
 }
 
 export async function deletePasswordDoc(
