@@ -3,27 +3,32 @@ import { askForAction, askForCredentials } from "./questions";
 import { handleGetPassword, handleSetPassword, hasAccess } from "./commands";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
+import {
+  closeDB,
+  connectDB,
+  createPasswordDoc,
+  deletePasswordDoc,
+  readPasswordDoc,
+  updatePasswordDoc,
+} from "./db";
+
 dotenv.config();
 
 const run = async () => {
   const url = process.env.MONGODB_URL;
 
   try {
-    const client = await MongoClient.connect(url, {
-      useUnifiedTopology: true,
+    await connectDB(url, "privat-manager-moritz");
+    await createPasswordDoc({
+      name: "Moritz",
+      value: "1111",
     });
-    console.log("Connected to DB!");
-
-    const db = client.db("privat-manager-moritz");
-    await db.collection("inventory").insertOne({
-      item: "canvas",
-      qty: 250,
-      tags: ["polyester"],
-      size: { h: 28, w: 35.5, unit: "cm" },
-    });
-    client.close();
+    console.log(await readPasswordDoc("Moritz"));
+    await updatePasswordDoc({ name: "Moritz", value: "1112" });
+    await deletePasswordDoc("Moritz");
+    await closeDB();
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
