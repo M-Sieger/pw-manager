@@ -1,3 +1,4 @@
+import { readPasswordDoc } from "./db";
 import { printPassword, printPasswordSet } from "./messages";
 import { askForPasswordValue } from "./questions";
 
@@ -15,5 +16,10 @@ export const handleSetPassword = async (
 export const handleGetPassword = async (
   passwordName: string
 ): Promise<void> => {
-  printPassword(passwordName, "abc123");
+  const passwordDoc = await readPasswordDoc(passwordName);
+  if (!passwordDoc) {
+    console.log("No password found!");
+    return;
+  }
+  printPassword(passwordDoc.name, passwordDoc.value);
 };
