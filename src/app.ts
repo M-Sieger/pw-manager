@@ -3,16 +3,7 @@ import { askForAction, askForCredentials } from "./questions";
 import { handleGetPassword, handleSetPassword, hasAccess } from "./commands";
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
-import {
-  closeDB,
-  connectDB,
-  createPasswordDoc,
-  decryptPassword,
-  deletePasswordDoc,
-  encryptPassword,
-  readPasswordDoc,
-  updatePasswordDoc,
-} from "./db";
+import { closeDB, connectDB } from "./db";
 
 dotenv.config();
 
@@ -31,10 +22,19 @@ const run = async () => {
   printWelcomeMessage();
 
   try {
+    const credentials = await askForCredentials();
+    if (!hasAccess(credentials.masterPassword)) {
+      printNoAccess();
+      run();
+      return;
+    }
+
     await connectDB(url, "privat-manager-moritz");
+
     const action = await askForAction();
     const commandFunction = commandToFunction[action.command];
     await commandFunction(action.passwordName);
+
     await closeDB();
   } catch (error) {
     console.error(error);

@@ -8,6 +8,7 @@
     "start": "node dist/app.js ",
     "build": "tsc",
     "dev": "tsc --watch",
+    "server": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -33,6 +34,7 @@
     "crypto-js": "^4.0.0",
     "dotenv": "^8.2.0",
     "mongodb": "^3.6.3",
-    "prompts": "^2.4.0"
+    "prompts": "^2.4.0",
+    "server.js": "^1.0.0"
   }
 }
