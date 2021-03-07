@@ -1,9 +1,8 @@
 ### GET a password by name
-GET http://localhost:3333/api/passwords/Google
+GET http://localhost:3333/api/passwords/Moritz
 
 ### GET an unknown password by name
-GET http://localhost:3333/api/passwords/wifi1234ihfdsg
-
+GET http://localhost:3333/api/passwords/wifi545454
 
 ### POST a new password
 POST http://localhost:3333/api/passwords
