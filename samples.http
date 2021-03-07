@@ -12,3 +12,7 @@ Content-Type: application/json
     "name": "WiFi",
     "value": "super-secret-password!!11"
 } 
+
+### DELETE password
+
+DELETE http://localhost:3333/api/passwords/asaa
