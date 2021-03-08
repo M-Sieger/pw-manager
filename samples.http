@@ -15,4 +15,4 @@ Content-Type: application/json
 
 ### DELETE password
 
-DELETE http://localhost:3333/api/passwords/asaa
+DELETE http://localhost:3333/api/passwords/Moritz
