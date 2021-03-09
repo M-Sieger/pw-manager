@@ -1,0 +1,18 @@
+### GET a password by name
+GET http://localhost:3333/api/passwords/WiFi
+
+### GET an unknown password by name
+GET http://localhost:3333/api/passwords/wifi545454
+
+### POST a new password
+POST http://localhost:3333/api/passwords
+Content-Type: application/json
+
+{
+    "name": "WiFi",
+    "value": "super-secret-password!!11"
+} 
+
+### DELETE password
+
+DELETE http://localhost:3333/api/passwords/WiFi
